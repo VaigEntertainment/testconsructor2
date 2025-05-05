@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Constructor2</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
       html, body {
@@ -14,6 +13,7 @@
         overflow: hidden;
         background: #000;
       }
+
       #unity-container {
         width: 100%;
         height: 100%;
@@ -21,12 +21,14 @@
         top: 0;
         left: 0;
       }
+
       #unity-canvas {
         width: 100%;
         height: 100%;
         display: block;
         background: #000;
       }
+
       #unity-loading-bar {
         position: absolute;
         top: 50%;
@@ -35,16 +37,19 @@
         width: 200px;
         display: block;
       }
+
       #unity-progress-bar-empty {
         width: 100%;
         height: 20px;
         background: #555;
       }
+
       #unity-progress-bar-full {
         width: 0%;
         height: 100%;
         background: #4caf50;
       }
+
       #unity-warning {
         position: absolute;
         top: 0;
@@ -70,6 +75,7 @@
       </div>
       <div id="unity-warning"></div>
     </div>
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -115,11 +121,6 @@
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no';
         document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
-      } else {
-        canvas.style.width = "1280px";
-        canvas.style.height = "800px";
       }
 
       loadingBar.style.display = "block";
@@ -128,7 +129,7 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
+          progressBarFull.style.width = (100 * progress) + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
         }).catch((message) => {
